@@ -1098,6 +1098,7 @@ declare namespace Eris {
       reason?: string
     ): Promise<number>;
     getGuildEmbed(guildID: string): Promise<GuildEmbed>;
+    getGuildPreview(guildID: string) : Promise<GuildPreview>;
     getGuildIntegrations(guildID: string): Promise<GuildIntegration[]>;
     editGuildIntegration(guildID: string, integrationID: string, options: IntegrationOptions): Promise<void>;
     deleteGuildIntegration(guildID: string, integrationID: string): Promise<void>;
@@ -1600,6 +1601,19 @@ declare namespace Eris {
     edit(options: { expireBehavior: string; expireGracePeriod: string; enableEmoticons: string }): Promise<void>;
     delete(): Promise<void>;
     sync(): Promise<void>;
+  }
+
+  export interface GuildPreview {
+    id: string;
+    name: string;
+    icon: string | null;
+    description: string | null;
+    splash: string | null;
+    discovery_splash: string | null;
+    features: string[];
+    approximate_member_count: number;
+    approximate_presence_count: number;
+    emojis: Emoji[];
   }
 
   export class Invite implements SimpleJSON {
